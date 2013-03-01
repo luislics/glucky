@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Glucky</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="glucky_hola">Glucky</string>
+    <string name="usuario_hola">Ingresa tu usuario</string>
+    <string name="button">Button</string>
+    <string name="usuario_nuevo">¿Eres nuevo aquí?</string>
+
+</resources>

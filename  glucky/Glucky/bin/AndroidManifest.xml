@@ -26,6 +26,11 @@
 
             android:screenOrientation="portrait" >
         </activity>
+         <activity
+            android:name="com.glucky.registro.NuevoUsuarioActivity"
+
+            android:screenOrientation="portrait" >
+        </activity>
     </application>
 
 </manifest>

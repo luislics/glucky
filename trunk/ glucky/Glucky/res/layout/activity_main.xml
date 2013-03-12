@@ -1,57 +1,64 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".MainActivity" >
-
-    <EditText
-        android:id="@+id/boxusuario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="160dp"
-        android:ems="10"
-        android:inputType="textPersonName" />
-
+    android:gravity="center"
+    >
+    <LinearLayout 
+    
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:weightSum="1.0"
+     >
+    
+    
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/boxusuario"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="86dp"
         android:text="@string/glucky_hola"
+        android:layout_marginBottom="20dp"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <TextView
-        android:id="@+id/textView2"
+    <EditText
+        android:id="@+id/etUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/boxusuario"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="44dp"
-        android:text="@string/usuario_hola" />
+        android:hint="Nombre de usuario"
+        android:layout_marginBottom="10dp"
+        android:inputType="textPersonName" />
+    <EditText 
+        android:id="@+id/etClave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/boxusuario"
+        android:layout_marginBottom="20dp"
+        android:hint="Clave"/>
 
     <Button
         android:id="@+id/botonlogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/boxusuario"
-        android:layout_alignLeft="@+id/textView1"
-        android:text="@string/button" />
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true"
+        android:text="Ingresar"
+         />
 
-    <TextView
+
+ 
+
+
+
+</LinearLayout>
+   <TextView
         android:id="@+id/BtnNvoUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:text="@string/usuario_nuevo"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="15dp"
         android:textAppearance="?android:attr/textAppearanceMedium" />
-
 </RelativeLayout>

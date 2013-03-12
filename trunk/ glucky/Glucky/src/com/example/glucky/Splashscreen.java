@@ -1,15 +1,15 @@
 package com.example.glucky;
 
+import java.io.IOException;
 
-
-
-
+import com.glucky.utils.DBUtils;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.MotionEvent;
+import android.widget.Toast;
 
 
 
@@ -18,6 +18,12 @@ public class Splashscreen extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.splashglucky);
+		try {
+			DBUtils.createDatabaseIfNotExists(Splashscreen.this);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			Toast.makeText(Splashscreen.this, e.toString(), Toast.LENGTH_SHORT).show();
+		}
 		currentCountDownTimer = new SplashCountDownTimer();
 		currentCountDownTimer.start();		
 	

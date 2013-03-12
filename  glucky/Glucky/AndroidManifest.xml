@@ -13,28 +13,32 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-        <activity
-            android:name="com.example.glucky.Splashscreen" >
+        <activity android:name="com.example.glucky.Splashscreen" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-         <activity
+        <activity
             android:name="com.example.glucky.MainActivity"
-
             android:screenOrientation="portrait" >
         </activity>
-         <activity
+        <activity
             android:name="com.glucky.registro.NuevoUsuarioActivity"
-
             android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.glucky.Principal.PantallaPrincipal"
-
             android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.example.glucky.Formulario"
+            android:label="@string/title_activity_formulario" >
+        </activity>
+        <activity
+            android:name="com.example.glucky.GustosUsuario"
+            android:label="@string/title_activity_gustos_usuario" >
         </activity>
     </application>
 

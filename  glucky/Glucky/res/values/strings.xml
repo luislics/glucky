@@ -8,5 +8,7 @@
     <string name="usuario_hola">Ingresa tu usuario</string>
     <string name="button">Button</string>
     <string name="usuario_nuevo">¿Eres nuevo aquí?</string>
+    <string name="title_activity_formulario">Formulario</string>
+    <string name="title_activity_gustos_usuario">GustosUsuario</string>
 
 </resources>

@@ -3,7 +3,7 @@
     package="com.example.glucky"
     android:versionCode="1"
     android:versionName="1.0" >
-
+ <uses-permission android:name="android.permission.INTERNET"/>
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="17" />
@@ -40,6 +40,16 @@
             android:name="com.example.glucky.GustosUsuario"
             android:label="@string/title_activity_gustos_usuario" >
         </activity>
+        <activity
+            android:name="feedrss.SimpleRSSReaderActivity"
+             android:screenOrientation="portrait" >
+        </activity>
+           <activity
+            android:name="com.example.glucky.GraficadorGlucosa"
+             android:screenOrientation="landscape" >
+        </activity>
+       
     </application>
 
+    
 </manifest>

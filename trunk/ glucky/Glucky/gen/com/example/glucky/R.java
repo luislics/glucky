@@ -28,10 +28,10 @@ public final class R {
     }
     public static final class id {
         public static final int BtnNvoUser=0x7f08000d;
-        public static final int action_settings=0x7f08001a;
+        public static final int action_settings=0x7f08001b;
         public static final int botonlogin=0x7f08000b;
         public static final int boxusuario=0x7f08000a;
-        public static final int btnCrear=0x7f080016;
+        public static final int btnCrear=0x7f080017;
         public static final int btnGuardar=0x7f080004;
         public static final int btnGustos=0x7f080005;
         public static final int button1=0x7f080010;
@@ -39,20 +39,21 @@ public final class R {
         public static final int etClave=0x7f080009;
         public static final int etEdad=0x7f080000;
         public static final int etEstatura=0x7f080002;
-        public static final int etPas=0x7f080015;
+        public static final int etPas=0x7f080016;
         public static final int etPeso=0x7f080001;
-        public static final int etUs=0x7f080014;
+        public static final int etUs=0x7f080015;
         public static final int etUsuario=0x7f080008;
-        public static final int glucographic=0x7f080011;
-        public static final int imagengrafica=0x7f080012;
-        public static final int imgSintoma=0x7f080017;
-        public static final int label=0x7f080019;
+        public static final int glucographic=0x7f080012;
+        public static final int imagengrafica=0x7f080013;
+        public static final int imgSintoma=0x7f080018;
+        public static final int label=0x7f08001a;
         public static final int lvGustos=0x7f080006;
-        public static final int rate=0x7f080018;
+        public static final int rate=0x7f080019;
         public static final int spSexo=0x7f080003;
         public static final int textView1=0x7f080007;
         public static final int textView2=0x7f08000c;
-        public static final int titulofeed=0x7f080013;
+        public static final int textolista=0x7f080011;
+        public static final int titulofeed=0x7f080014;
         public static final int tvBienvenida=0x7f08000e;
     }
     public static final class layout {

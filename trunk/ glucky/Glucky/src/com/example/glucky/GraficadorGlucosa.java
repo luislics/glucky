@@ -19,10 +19,10 @@ public class GraficadorGlucosa extends Activity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.glucosa);
-		double x1=2.0;
-		double x2= 1.5;
+		double x1=2.7;
+		double x2= 2.3;
 		double x3 =2.5;
-		double x4=1.0;
+		double x4=3.0;
 		double suma =x1+x2+x3+x4;
 		double resglucosa=suma/4;
 		// graph with dynamically genereated horizontal and vertical labels
@@ -39,11 +39,12 @@ public class GraficadorGlucosa extends Activity {
 	              , "Tus Niveles de glucosa" // heading  
 	        );  
 	        graphView.addSeries(exampleSeries); // data  
-	        graphView.setHorizontalLabels(new String[]{"Antier","Ayer","Hoy"});
-	        graphView.setVerticalLabels(new String[]{"Bajo","Medio","Alto"});
-	        graphView.setViewPort(2, 40);
+	        graphView.setHorizontalLabels(new String[]{"Semana Pasada","Antier","Ayer","Hoy"});
+	        graphView.setVerticalLabels(new String[]{"Alto","Medio","Bajo"});
+	        //graphView.setViewPort(2, 40);
 	       // graphView.setScrollable(true);
 	        //graphView.setScalable(true);
+	        
 	        LinearLayout layout = (LinearLayout) findViewById(R.id.glucographic);
 	        ImageView buenaomala=(ImageView)findViewById(R.id.imagengrafica);
 	        TextView nivel= (TextView)findViewById(R.id.textView1);

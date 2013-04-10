@@ -13,7 +13,8 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-        <activity android:name="com.example.glucky.Splashscreen" >
+        <activity android:name="com.example.glucky.Splashscreen" 
+            android:theme="@android:style/Theme.NoTitleBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,31 +23,38 @@
         </activity>
         <activity
             android:name="com.example.glucky.MainActivity"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait" 
+            android:theme="@android:style/Theme.NoTitleBar">
         </activity>
         <activity
             android:name="com.glucky.registro.NuevoUsuarioActivity"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar" >
         </activity>
         <activity
             android:name="com.glucky.Principal.PantallaPrincipal"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="landscape" 
+            android:theme="@android:style/Theme.NoTitleBar">
         </activity>
         <activity
             android:name="com.example.glucky.Formulario"
-            android:label="@string/title_activity_formulario" >
+            android:label="@string/title_activity_formulario"
+            android:theme="@android:style/Theme.NoTitleBar" >
         </activity>
         <activity
             android:name="com.example.glucky.GustosUsuario"
-            android:label="@string/title_activity_gustos_usuario" >
+            android:label="@string/title_activity_gustos_usuario" 
+            android:theme="@android:style/Theme.NoTitleBar">
         </activity>
         <activity
             android:name="feedrss.SimpleRSSReaderActivity"
-             android:screenOrientation="portrait" >
+             android:screenOrientation="portrait"
+             android:theme="@android:style/Theme.NoTitleBar" >
         </activity>
            <activity
             android:name="com.example.glucky.GraficadorGlucosa"
-             android:screenOrientation="landscape" >
+             android:screenOrientation="landscape"
+             android:theme="@android:style/Theme.NoTitleBar" >
         </activity>
        
     </application>

@@ -10,5 +10,6 @@
     <string name="usuario_nuevo">¿Eres nuevo aquí?</string>
     <string name="title_activity_formulario">Formulario</string>
     <string name="title_activity_gustos_usuario">GustosUsuario</string>
+    <string name="title_activity_comidas">ComidasAct</string>
 
 </resources>

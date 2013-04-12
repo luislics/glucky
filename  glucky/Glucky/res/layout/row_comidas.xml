@@ -20,16 +20,15 @@
          
              >
          </ImageView>
-  <RatingBar
-      android:id="@+id/rate"
+  <CheckBox
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
+      android:id="@+id/cbComida"
+      android:layout_alignParentTop="true"
       android:layout_alignParentRight="true"
-      android:numStars="3"
-      android:rating="0"
-      android:paddingTop="10dp"
-      android:stepSize="1"
-      android:layout_alignParentTop="true" />
+      android:layout_marginRight="20dp"
+      android:layout_marginTop="20dp"
+      ></CheckBox>
 
  <TextView
      android:id="@+id/label"

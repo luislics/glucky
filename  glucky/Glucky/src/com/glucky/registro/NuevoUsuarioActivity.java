@@ -17,6 +17,7 @@ import com.glucky.utils.DBUtils;
 public class NuevoUsuarioActivity extends Activity {
 	EditText etUsuario, etPass;
 	Button btnCrear;
+	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.nuevo_user);

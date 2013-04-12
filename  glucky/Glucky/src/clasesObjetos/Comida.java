@@ -1,6 +1,6 @@
 package clasesObjetos;
 
 public class Comida {
-	public String nombre;
+	public String nombre,tipoComida;
 	public int idComida, glucosa,nutriente;
 }

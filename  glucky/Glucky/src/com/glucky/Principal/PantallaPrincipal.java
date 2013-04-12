@@ -2,40 +2,30 @@ package com.glucky.Principal;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
-import org.xmlpull.v1.XmlPullParserFactory;
-
 import clasesObjetos.Usuario;
 
+import com.example.glucky.ComidasAct;
 import com.example.glucky.GraficadorGlucosa;
 import com.example.glucky.GustosUsuario;
-import com.example.glucky.MainActivity;
 import com.example.glucky.R;
-import com.example.glucky.Splashscreen;
-import com.glucky.utils.DBUtils;
 
-import feedrss.SimpleRSSReaderActivity;
+import feedrss.AndroidRssReader;
 
-import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ListActivity;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class PantallaPrincipal extends ListActivity{
 	TextView tvBienvenida;
@@ -45,13 +35,15 @@ public class PantallaPrincipal extends ListActivity{
 	Button btnglucosa;
 	List headlines;
 	List links;
+	Button btnComidas;
+	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activityprincipal);
 		//aquí inicia el rss
 		headlines = new ArrayList();
 		links = new ArrayList();
-
+/**
 		try {
 			URL url = new URL("http://feeds.guiainfantil.com/guia_infantil_ninos_bebes");
 
@@ -62,14 +54,7 @@ public class PantallaPrincipal extends ListActivity{
 		        // We will get the XML from an input stream
 			xpp.setInput(getInputStream(url), "utf-8");
 
-		        /* We will parse the XML content looking for the "<title>" tag which appears inside the "<item>" tag.
-		         * However, we should take in consideration that the rss feed name also is enclosed in a "<title>" tag.
-		         * As we know, every feed begins with these lines: "<channel><title>Feed_Name</title>...."
-		         * so we should skip the "<title>" tag which is a child of "<channel>" tag,
-		         * and take in consideration only "<title>" tag which is a child of "<item>"
-		         *
-		         * In order to achieve this, we will make use of a boolean variable.
-		         */
+	
 			boolean insideItem = false;
 
 		        // Returns the type of current event: START_TAG, END_TAG, etc..
@@ -100,6 +85,7 @@ public class PantallaPrincipal extends ListActivity{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
 
 		// Binding data
 		ArrayAdapter adapter = new ArrayAdapter(this,
@@ -107,6 +93,8 @@ public class PantallaPrincipal extends ListActivity{
 		
 		setListAdapter(adapter);
 		//aqui acaba el rss 
+		
+		**/
 		
 		tvBienvenida = (TextView)findViewById(R.id.tvBienvenida);
 		Bundle extras = getIntent().getExtras();
@@ -129,7 +117,7 @@ public class PantallaPrincipal extends ListActivity{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				startActivity(new Intent(new Intent(PantallaPrincipal.this, SimpleRSSReaderActivity.class)));
+				startActivity(new Intent(new Intent(PantallaPrincipal.this, AndroidRssReader.class)));
 			}
 		});
 		btnglucosa = (Button)findViewById(R.id.button2);
@@ -141,6 +129,68 @@ public class PantallaPrincipal extends ListActivity{
 				startActivity(new Intent(new Intent(PantallaPrincipal.this, GraficadorGlucosa.class)));
 			}
 		});
+		btnComidas = (Button)findViewById(R.id.btnComidas);
+		btnComidas.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				final Dialog dialog = new Dialog(PantallaPrincipal.this);
+				dialog.setContentView(R.layout.comidas_dialog);
+				dialog.setTitle("Selecciona el tipo");
+				dialog.setCancelable(true);
+				dialog.show();
+				Button dialDesayuno = (Button)dialog.findViewById(R.id.btnDesayuno);
+				Button dialComida = (Button)dialog.findViewById(R.id.btnComida);
+				Button dialCena = (Button)dialog.findViewById(R.id.btnCena);
+				Button dialSnacks = (Button)dialog.findViewById(R.id.btnSnacks);
+				dialDesayuno.setOnClickListener(new OnClickListener() {
+					
+					@Override
+					public void onClick(View v) {
+						// TODO Auto-generated method stub
+						Intent in = new Intent(PantallaPrincipal.this, ComidasAct.class);
+						in.putExtra("tipo", 0);
+						in.putExtra("usuario", usuario);
+						startActivity(in);
+					}
+				});
+				dialComida.setOnClickListener(new OnClickListener() {
+					
+					@Override
+					public void onClick(View v) {
+						// TODO Auto-generated method stub
+						Intent in = new Intent(PantallaPrincipal.this, ComidasAct.class);
+						in.putExtra("tipo", 1);
+						in.putExtra("usuario", usuario);
+						startActivity(in);
+					}
+				});
+				dialCena.setOnClickListener(new OnClickListener() {
+					
+					@Override
+					public void onClick(View v) {
+						// TODO Auto-generated method stub
+						Intent in = new Intent(PantallaPrincipal.this, ComidasAct.class);
+						in.putExtra("tipo", 2);
+						in.putExtra("usuario", usuario);
+						startActivity(in);
+					}
+				});
+				dialSnacks.setOnClickListener(new OnClickListener() {
+					
+					@Override
+					public void onClick(View v) {
+						// TODO Auto-generated method stub
+						Intent in = new Intent(PantallaPrincipal.this, ComidasAct.class);
+						in.putExtra("tipo", 3);
+						in.putExtra("usuario", usuario);
+						startActivity(in);
+					}
+				});
+				
+			}
+		});
 	
 	}
 	public InputStream getInputStream(URL url) {
@@ -150,6 +200,7 @@ public class PantallaPrincipal extends ListActivity{
 		       return null;
 		     }
 		}
+	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		   Uri uri = Uri.parse((String) links.get(position));
 		   Intent intent = new Intent(Intent.ACTION_VIEW, uri);

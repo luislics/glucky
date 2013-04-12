@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 public class Splashscreen extends Activity {
 	private CountDownTimer currentCountDownTimer;
+	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.splashglucky);
@@ -28,6 +29,7 @@ public class Splashscreen extends Activity {
 		currentCountDownTimer.start();		
 	
 	}
+	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 		if (event.getAction() == MotionEvent.ACTION_DOWN) {
 			cancelTimer();

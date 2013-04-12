@@ -1,128 +1,67 @@
 package feedrss;
-
+import java.util.ArrayList;
+import java.util.List;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
-
+/**
+ * SAX tag handler. The Class contains a list of RSSItems which is being filled while the parser is working
+ * @author ITCuties
+ */
 public class RSSHandler extends DefaultHandler {
-	
-	final int state_unknown = 0;
-	final int state_title = 1;
-	final int state_description = 2;
-	final int state_link = 3;
-	final int state_pubdate = 4;
-	int currentState = state_unknown;
-	
-	RSSFeed feed;
-	RSSItem item;
-	
-	boolean itemFound = false;
-	
-	RSSHandler(){
-	}
-	
-	RSSFeed getFeed(){
-		return feed;
-	}
-
-	@Override
-	public void startDocument() throws SAXException {
-		// TODO Auto-generated method stub
-		feed = new RSSFeed();
-		item = new RSSItem();
-		
-	}
-
-	@Override
-	public void endDocument() throws SAXException {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void startElement(String uri, String localName, String qName,
-			Attributes attributes) throws SAXException {
-		// TODO Auto-generated method stub
-
-		if (localName.equalsIgnoreCase("item")){
-			itemFound = true;
-			item = new RSSItem();
-			currentState = state_unknown;
-		}
-		else if (localName.equalsIgnoreCase("title")){
-			currentState = state_title;
-		}
-		else if (localName.equalsIgnoreCase("description")){
-			currentState = state_description;
-		}
-		else if (localName.equalsIgnoreCase("link")){
-			currentState = state_link;
-		}
-		else if (localName.equalsIgnoreCase("pubdate")){
-			currentState = state_pubdate;
-		}
-		else{
-			currentState = state_unknown;
-		}
-		
-	}
-	
-	@Override
-	public void endElement(String uri, String localName, String qName)
-			throws SAXException {
-		// TODO Auto-generated method stub
-		if (localName.equalsIgnoreCase("item")){
-			feed.addItem(item);
-		}
-	}
-	
-	@Override
-	public void characters(char[] ch, int start, int length)
-			throws SAXException {
-		// TODO Auto-generated method stub
-		
-		String strCharacters = new String(ch,start,length);
-		
-		if (itemFound==true){
-		// "item" tag found, it's item's parameter
-			switch(currentState){
-			case state_title:
-				item.setTitle(strCharacters);
-				break;
-			case state_description:
-				item.setDescription(strCharacters);
-				break;
-			case state_link:
-				item.setLink(strCharacters);
-				break;
-			case state_pubdate:
-				item.setPubdate(strCharacters);
-				break;	
-			default:
-				break;
-			}
-		}
-		else{
-		// not "item" tag found, it's feed's parameter
-			switch(currentState){
-			case state_title:
-				feed.setTitle(strCharacters);
-				break;
-			case state_description:
-				feed.setDescription(strCharacters);
-				break;
-			case state_link:
-				feed.setLink(strCharacters);
-				break;
-			case state_pubdate:
-				feed.setPubdate(strCharacters);
-				break;	
-			default:
-				break;
-			}
-		}
-		
-		currentState = state_unknown;
-	}
-	
-
+ 
+    // List of items parsed
+    private List<RSSItem> RSSItems;
+    // We have a local reference to an object which is constructed while parser is working on an item tag
+    // Used to reference item while parsing
+    private RSSItem currentItem;
+    // We have two indicators which are used to differentiate whether a tag title or link is being processed by the parser
+    // Parsing title indicator
+    private boolean parsingTitle;
+    // Parsing link indicator
+    private boolean parsingLink;
+ 
+    public RSSHandler() {
+        RSSItems = new ArrayList();
+    }
+    // We have an access method which returns a list of items that are read from the RSS feed. This method will be called when parsing is done.
+    public List<RSSItem> getItems() {
+        return RSSItems;
+    }
+    // The StartElement method creates an empty RSSItem object when an item start tag is being processed. When a title or link tag are being processed appropriate indicators are set to true.
+    @Override
+    public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
+                   if ("item".equals(qName)) {
+            currentItem = new RSSItem();
+        } else if ("title".equals(qName)) {
+            parsingTitle = true;
+        } else if ("link".equals(qName)) {
+            parsingLink = true;
+        }
+    }
+    // The EndElement method adds the  current RSSItem to the list when a closing item tag is processed. It sets appropriate indicators to false -  when title and link closing tags are processed
+    @Override
+    public void endElement(String uri, String localName, String qName) throws SAXException {
+        if ("item".equals(qName)) {
+            RSSItems.add(currentItem);
+            currentItem = null;
+        } else if ("title".equals(qName)) {
+            parsingTitle = false;
+        } else if ("link".equals(qName)) {
+            parsingLink = false;
+        }
+    }
+    // Characters method fills current RSSItem object with data when title and link tag content is being processed
+    @Override
+    public void characters(char[] ch, int start, int length) throws SAXException {
+        if (parsingTitle) {
+            if (currentItem != null)
+                currentItem.setTitle(new String(ch, start, length));
+        } else if (parsingLink) {
+            if (currentItem != null) {
+                currentItem.setLink(new String(ch, start, length));
+                parsingLink = false;
+            }
+        }
+    }
 }

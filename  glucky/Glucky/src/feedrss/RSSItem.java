@@ -1,55 +1,29 @@
 package feedrss;
-
+/**
+ * This code encapsulates RSS item data.
+ * Our application needs title and link data.
+ *
+ * @author ITCuties
+ */
 public class RSSItem {
-	
-	private String title = null;
-	private String description = null;
-	private String link = null;
-	private String pubdate = null;
-	
-	RSSItem(){
-	}
-	
-	void setTitle(String value)
-	{
-		title = value;
-	}
-	void setDescription(String value)
-	{
-		description = value;
-	}
-	void setLink(String value)
-	{
-		link = value;
-	}
-	void setPubdate(String value)
-	{
-		pubdate = value;
-	}
-	
-	String getTitle()
-	{
-		return title;
-	}
-	String getDescription()
-	{
-		return description;
-	}
-	String getLink()
-	{
-		return link;
-	}
-	String getPubdate()
-	{
-		return pubdate;
-	}
-
-	@Override
-	public String toString() {
-		// TODO Auto-generated method stub
-		return title;
-	}
-	
-	
-
+    // item title
+    private String title;
+    // item link
+    private String link;
+    public String getTitle() {
+        return title;
+    }
+    public void setTitle(String title) {
+        this.title = title;
+    }
+    public String getLink() {
+        return link;
+    }
+    public void setLink(String link) {
+        this.link = link;
+    }
+    @Override
+    public String toString() {
+        return title;
+    }
 }

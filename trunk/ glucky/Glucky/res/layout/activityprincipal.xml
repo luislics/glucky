@@ -19,16 +19,24 @@
         android:layout_height="wrap_content"
         android:text="Glucosa" />
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Noticias" />
+
 
     <Button 
         android:id="@+id/btnGustos"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:text="Gustos"/>
+        <Button 
+        android:id="@+id/btnComidas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Comidas"/>
+    
+<Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Noticias" />
 
     <TextView
         android:id="@+id/textolista"

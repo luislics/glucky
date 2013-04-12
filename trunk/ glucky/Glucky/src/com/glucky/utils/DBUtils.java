@@ -55,7 +55,7 @@ public class DBUtils {
 
             // Check that we have the latest version of the db
 
-            boolean doUpgrade = false;
+            boolean doUpgrade = true;
 
 
 

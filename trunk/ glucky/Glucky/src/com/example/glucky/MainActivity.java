@@ -70,7 +70,7 @@ public class MainActivity extends Activity {
 	}
 	public boolean checkLogin(){
 		SQLiteDatabase db = DBUtils.getStaticDb();
-		Cursor cursor = db.rawQuery("select password, idUsuario,nombre,edad,peso,estatura,sexo,tipoDiabetes from usuarios where nombre = '"+etUsuario.getText().toString()+"'", null);
+		Cursor cursor = db.rawQuery("select password, idUsuario,nombre,edad,peso,estatura,sexo from usuarios where nombre = '"+etUsuario.getText().toString()+"'", null);
 		
 		if(cursor.moveToFirst()){
 			if(cursor.getString(0).equals(etClave.getText().toString())){
@@ -84,7 +84,7 @@ public class MainActivity extends Activity {
 					usuario.peso = cursor.getInt(4);
 					usuario.estatura = cursor.getInt(5);
 					usuario.sexo = cursor.getString(6);
-					usuario.tipoDiabetes = cursor.getInt(7);
+					
 				}
 
 				db.close();

@@ -4,8 +4,6 @@ import com.jjoe64.graphview.BarGraphView;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.GraphView.GraphViewData;
 import com.jjoe64.graphview.GraphViewSeries;
-import com.jjoe64.graphview.LineGraphView;
-
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -15,6 +13,7 @@ import android.widget.TextView;
 
 public class GraficadorGlucosa extends Activity {
 
+	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);

@@ -18,7 +18,7 @@
            android:gravity="center"
            android:layout_centerInParent="true"
            android:textSize="20sp"
-           android:text="Tus gustos de comida"
+           android:text="Selecciona tu comida"
            
             />
         <Button 
@@ -31,7 +31,7 @@
     </RelativeLayout>
 
     <ListView
-        android:id="@+id/lvGustos"
+        android:id="@+id/lvComidas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"

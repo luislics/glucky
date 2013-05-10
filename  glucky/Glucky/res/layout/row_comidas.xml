@@ -7,7 +7,7 @@
 	<RelativeLayout 
 	    android:layout_width="match_parent"
 	    android:layout_height="115dp"
-	    
+	    android:background="@drawable/listfondo"
 	    
 	    >
 	          <ImageView
@@ -17,6 +17,9 @@
             android:layout_height="95dp"
             android:layout_alignParentLeft="true"
             android:layout_marginRight="15dp"
+           	android:background="@layout/roundedcorners"
+           	android:padding="15dp"
+           	android:layout_marginLeft="10dp"
          
              >
          </ImageView>
@@ -38,7 +41,10 @@
      android:layout_alignParentBottom="true"
      android:gravity="right"
      android:padding="10dp"
-     android:textSize="14sp" />
+     android:textColor="#FFFFFF"
+     android:layout_marginBottom="10dp"
+     android:textSize="20sp" />
+ 	
   
   </RelativeLayout>
 </LinearLayout>

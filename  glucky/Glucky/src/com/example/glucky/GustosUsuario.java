@@ -124,7 +124,11 @@ public class GustosUsuario extends Activity {
 				ImageView img = (ImageView) v.findViewById(R.id.imgSintoma);
 
 				
-				img.setImageResource(android.R.drawable.btn_star);
+				//img.setImageResource(android.R.drawable.btn_star);
+				String nombreRecurso = ComidasAct.removeAcentos(comidas.get(pos).nombre).replace(" ", "").toLowerCase();
+				int imgid = getResources().getIdentifier(nombreRecurso, "drawable", getPackageName());
+				img.setImageBitmap(ComidasAct.decodeSampledBitmapFromResource(getResources(),imgid , 50, 50));
+				
 				TextView tv = (TextView) v.findViewById(R.id.label);
 				tv.setText(comidas.get(pos).nombre);
 				RatingBar rb = (RatingBar) v.findViewById(R.id.rate);

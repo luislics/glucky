@@ -1,23 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal" 
-   
+   android:background="@drawable/main"
+   android:padding="10dp"
     >
-
-    <TextView
-        android:id="@+id/tvBienvenida"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <Button
+       <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Glucosa" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/glucosa"
+         />
+
+    <TextView
+        android:id="@+id/tvBienvenida"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="HOLAA"
+        android:layout_centerInParent="true"
+        android:paddingRight="20dp"
+        android:paddingTop="50dp"
+        android:textSize="15sp"
+        android:textColor="#FFFFFF"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+ 
 
 
 
@@ -25,33 +35,26 @@
         android:id="@+id/btnGustos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Gustos"/>
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/gustos"
+        />
         <Button 
         android:id="@+id/btnComidas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Comidas"/>
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:background="@drawable/btn_comida"/>
     
 <Button
         android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Noticias" />
+       	android:layout_alignParentBottom="true"
+       	android:layout_alignParentRight="true"
+       	android:background="@drawable/noticias" />
 
-    <TextView
-        android:id="@+id/textolista"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:text="        Mira, consejos para ti          " />
 
-    <ListView
-        android:id="@+android:id/list"
-        android:layout_width="186dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="right" 
-        >
-        
-    </ListView>
 
-</LinearLayout>
+</RelativeLayout>

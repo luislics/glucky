@@ -3,29 +3,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal" 
-    android:background="@android:color/black">
+    android:weightSum="1.0"
+    android:background="@drawable/grafgl">
 
     <LinearLayout
         android:id="@+id/glucographic"
-        android:layout_width="306dp"
+        android:layout_width="0dp"
+        android:layout_weight=".5"
         android:layout_height="match_parent"
         android:orientation="horizontal" >
     </LinearLayout>
 
 <LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="match_parent" >
+    android:layout_width="0dp"
+    android:layout_weight=".5"
+    android:layout_height="match_parent" 
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/textView1"
-        android:layout_width="100dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView" />
 
     <ImageView
         android:id="@+id/imagengrafica"
-        android:layout_width="260dp"
-        android:layout_height="200dp" 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
         android:layout_gravity="bottom"/>
     
 </LinearLayout>

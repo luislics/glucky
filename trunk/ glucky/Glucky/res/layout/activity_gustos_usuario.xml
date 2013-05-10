@@ -9,6 +9,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="55dp"
+        
         >
         <TextView 
             android:id="@+id/tvTitle"
@@ -23,9 +24,10 @@
             />
         <Button 
             android:layout_width="55dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:text="OK"
+            android:background="@drawable/okbtn"
+           	android:layout_margin="10dp"
             android:id="@+id/btnGuardar"
             />
     </RelativeLayout>
@@ -35,6 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:background="#FFFFFF"
          >
     </ListView>
 

@@ -2,6 +2,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
+    
     >
     <LinearLayout 
     
@@ -9,30 +10,31 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
+    android:padding="10dp"
     android:weightSum="1.0"
+    android:background="@drawable/albertesqab"
      >
     
     
-    <TextView
-        android:id="@+id/textView1"
+    <ImageView 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/glucky_hola"
-        android:layout_marginBottom="20dp"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:layout_marginBottom="40dp"
+        android:src="@drawable/glucky"/>
 
     <EditText
         android:id="@+id/etUsuario"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Nombre de usuario"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="50dp"
         android:inputType="textPersonName" />
     <EditText 
         android:id="@+id/etClave"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/boxusuario"
+        android:inputType="textPassword"
         android:layout_marginBottom="20dp"
         android:hint="Clave"/>
 
@@ -42,6 +44,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView2"
         android:layout_centerHorizontal="true"
+        android:background="#FBB917"
+        android:padding="15dp"
         android:text="Ingresar"
          />
 

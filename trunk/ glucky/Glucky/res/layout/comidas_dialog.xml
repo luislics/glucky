@@ -16,24 +16,44 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight=".25"
+        android:background="@drawable/desayuno"
+        android:text="Desayunos"
+        android:textColor="#FFFFFF"
+        android:textSize="25dp"
+        android:textStyle="bold"
         android:id="@+id/btnDesayuno"/>
     <Button 
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight=".25"
+        android:text="Comidas"
         android:id="@+id/btnComida"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:textSize="25dp"
+        android:background="@drawable/comida"
         />
     <Button 
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight=".25"
         android:id="@+id/btnCena"
+        android:text="Cenas"
+        android:textSize="25dp"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:background="@drawable/cena"
         />
     <Button 
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight=".25"
+        android:textSize="25dp"
+        android:textStyle="bold"
         android:id="@+id/btnSnacks"
+        android:text="Snacks"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/snacks"
         />
 
 </LinearLayout>

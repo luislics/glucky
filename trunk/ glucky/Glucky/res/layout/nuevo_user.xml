@@ -3,8 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
+    android:padding="10dp"
     android:orientation="vertical" >
 
+    <ImageView 
+        android:src="@drawable/glucky"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"/>
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
@@ -15,7 +21,7 @@
 
     <EditText
         android:id="@+id/etUs"
-        android:layout_width="182dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:layout_marginBottom="20dp"
@@ -28,7 +34,7 @@
 
     <EditText
         android:id="@+id/etPas"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:layout_marginBottom="20dp"
@@ -38,5 +44,7 @@
         android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:text="Crear usuario"
+		android:padding="15dp"
+		android:background="#FBB917"
 		/>
 </LinearLayout>

@@ -1,86 +1,166 @@
 package feedrss;
  
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
+ 
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+ 
+import org.xml.sax.InputSource;
+import org.xml.sax.XMLReader;
 
 import com.example.glucky.R;
  
-import android.app.Activity;
+import android.app.ListActivity;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
  
-
- 
-/**
- * Main application activity.
- * 
- * Update: Downloading RSS data in an async task 
- * 
- * @author ITCuties
- *
- */
-public class AndroidRssReader extends Activity {
+public class AndroidRssReader extends ListActivity {
+    private ArrayList<RSSItem> itemlist = null;
+    private RSSListAdaptor rssadaptor = null;
      
-    // A reference to the local object
-    private AndroidRssReader local;
-     ListView itcItems;
-    /** 
-     * This method creates main application view
-     */
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // Set view
-        setContentView(R.layout.list);
-        itcItems = (ListView) findViewById(R.id.listrss);
-        // Set reference to this activity
-        local = this;
-         
-        GetRSSDataTask task = new GetRSSDataTask();
-         
-        // Start download RSS task
-        task.execute("http://datos-pedagogicos-para-ninos.webnode.cl/rss/all.xml");
-         
-        // Debug the thread name
-        Log.d("ITCRssReader", Thread.currentThread().getName());
+@Override
+public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.list);
+     
+    itemlist = new ArrayList<RSSItem>();
+     
+    new RetrieveRSSFeeds().execute();
+}
+ 
+@Override
+    protected void onListItemClick(ListView l, View v, int position, long id) {
+            super.onListItemClick(l, v, position, id);
+             
+            RSSItem data = itemlist.get(position);
+             
+            Intent intent = new Intent(Intent.ACTION_VIEW,Uri.parse(data.link));
+             
+            startActivity(intent);
     }
+ 
+    private void retrieveRSSFeed(String urlToRssFeed,ArrayList<RSSItem> list)
+{
+    try
+    {
+       URL url = new URL(urlToRssFeed);
+       SAXParserFactory factory = SAXParserFactory.newInstance();
+       SAXParser parser = factory.newSAXParser();
+       XMLReader xmlreader = parser.getXMLReader();
+       RSSParser theRssHandler = new RSSParser(list);
+ 
+       xmlreader.setContentHandler(theRssHandler);
+ 
+       InputSource is = new InputSource(url.openStream());
+ 
+       xmlreader.parse(is);
+    }
+    catch (Exception e)
+    {
+        e.printStackTrace();
+    }
+}
+ 
+private class RetrieveRSSFeeds extends AsyncTask<Void, Void, Void>
+{
+    private ProgressDialog progress = null;
      
-    private class GetRSSDataTask extends AsyncTask<String, Void, List<RSSItem> > {
-        @Override
-        protected List<RSSItem> doInBackground(String... urls) {
-             
-            // Debug the task thread name
-            Log.d("ITCRssReader", Thread.currentThread().getName());
-             
-            try {
-                // Create RSS reader
-                RssReader rssReader = new RssReader(urls[0]);
-             
-                // Parse RSS, get items
-                return rssReader.getItems();
-             
-            } catch (Exception e) {
-                Log.e("ITCRssReader", e.getMessage());
+            @Override
+            protected Void doInBackground(Void... params) {
+                    retrieveRSSFeed("http://www.nlm.nih.gov/medlineplus/spanish/feeds/topics/childnutrition.xml",itemlist);
+                     
+                    rssadaptor = new RSSListAdaptor(AndroidRssReader.this, R.layout.rssitemview,itemlist);
+         
+                    return null;
+            }
+     
+            @Override
+            protected void onCancelled() {
+                    super.onCancelled();
             }
              
-            return null;
-        }
-         
-        @Override
-        protected void onPostExecute(List<RSSItem> result) {
+            @Override
+            protected void onPreExecute() {
+                    progress = ProgressDialog.show(
+                            AndroidRssReader.this, null, "Cargando noticias...");
+                     
+                    super.onPreExecute();
+            }
              
-            // Get a ListView from main view
-            
-                         
-            // Create a list adapter
-            ArrayAdapter<RSSItem> adapter = new ArrayAdapter<RSSItem>(local,android.R.layout.simple_list_item_1, result);
-            // Set list adapter for the ListView
-            itcItems.setAdapter(adapter);
-                         
-            // Set list view item click listener
-            itcItems.setOnItemClickListener(new ListListener(result, local));
-        }
-    }   
+            @Override
+            protected void onPostExecute(Void result) {
+                    setListAdapter(rssadaptor);
+                     
+                    progress.dismiss();
+                     
+                    super.onPostExecute(result);
+            }
+             
+            @Override
+            protected void onProgressUpdate(Void... values) {
+                    super.onProgressUpdate(values);
+            }
+}
+ 
+private class RSSListAdaptor extends ArrayAdapter<RSSItem>{
+    private List<RSSItem> objects = null;
+     
+            public RSSListAdaptor(Context context, int textviewid, List<RSSItem> objects) {
+                    super(context, textviewid, objects);
+                     
+                    this.objects = objects;
+            }
+             
+            @Override
+            public int getCount() {
+                    return ((null != objects) ? objects.size() : 0);
+            }
+             
+            @Override
+            public long getItemId(int position) {
+                    return position;
+            }
+             
+            @Override
+            public RSSItem getItem(int position) {
+                    return ((null != objects) ? objects.get(position) : null);
+            }
+             
+            public View getView(int position, View convertView, ViewGroup parent) {
+                    View view = convertView;
+                     
+                    if(null == view)
+                    {
+                            LayoutInflater vi = (LayoutInflater)AndroidRssReader.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                            view = vi.inflate(R.layout.rssitemview, null);
+                    }
+                     
+                    RSSItem data = objects.get(position);
+                     
+                    if(null != data)
+                    {
+                            TextView title = (TextView)view.findViewById(R.id.txtTitle);
+                            TextView date = (TextView)view.findViewById(R.id.txtDate);
+                            TextView description = (TextView)view.findViewById(R.id.txtDescription);
+                             
+                            title.setText(data.title);
+                            date.setText("on " + data.date);
+                            description.setText(data.description);
+                    }
+                     
+                    return view;
+            }
+}
 }

@@ -2,41 +2,54 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:padding="20dp"
     android:orientation="vertical"
     android:gravity="center|top"
+    android:background="#82CAFF"
     tools:context=".Formulario" >
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:textColor="#463E3F"
+        android:textStyle="italic"
+        android:textSize="20sp"
         android:text="Completa tus datos para un correcto funcionamiento de la aplicación" 
         android:layout_marginBottom="10dp"/>
-    <EditText 
-        android:id="@+id/etEdad"
+    <TextView 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#463E3F"
+        android:textSize="15sp"
+        android:text="Ingresa tu cumpleaños"
+        
+        />
+    <DatePicker 
+        android:id="@+id/dpEdad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:hint="Edad"/>
+        android:hint="Cumpleaños"/>
         <EditText 
         android:id="@+id/etPeso"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:hint="Peso"/>
+        android:inputType="number"
+        android:hint="Peso (kg)"/>
         <EditText 
         android:id="@+id/etEstatura"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:hint="Estatura"/>
+        android:inputType="number"
+        android:hint="Estatura (cm)"/>
         <Spinner 
             android:id="@+id/spSexo"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:gravity="center"
             />
         <Button 
@@ -44,12 +57,32 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Guardar datos"
+            android:padding="15dp"
+            android:layout_marginBottom="10dp"
+            android:background="#FBB917"
             />
                 <Button 
             android:id="@+id/btnGustos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Ir a gustos"
+             android:background="#FBB917"
+             android:layout_marginBottom="15dp"
+             android:padding="15dp"
             />
+              <Button 
+            android:id="@+id/btnIngresar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ingresar"
+             android:background="#FBB917"
+             android:padding="15dp"
+            />
+                
+                    
+       <ImageView 
+           android:src="@drawable/pino"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"/>
         
 </LinearLayout>
